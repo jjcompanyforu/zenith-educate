@@ -1,9 +1,10 @@
 import useDocumentMeta from '../hooks/useDocumentMeta.js';
 import Hero from '../sections/Hero.jsx';
-import ResultsShowcase, { Highlights } from '../sections/ResultsShowcase.jsx';
+import ResultsShowcase from '../sections/ResultsShowcase.jsx';
+import { ForParents, PathFinder } from '../sections/HomeAudience.jsx';
 import VideoReel from '../sections/VideoReel.jsx';
 import { AboutIntro, Classrooms, Faq, ProgrammesSection, WhyZenith } from '../sections/HomeInfo.jsx';
-import { AdmissionsSection, ContactSection } from '../sections/HomeForms.jsx';
+import { ContactSection } from '../sections/HomeForms.jsx';
 import ResourcesSection from '../sections/ResourcesSection.jsx';
 import Leadership from '../sections/Leadership.jsx';
 
@@ -17,18 +18,18 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <Highlights />
+      <PathFinder />
       <ResultsShowcase />
-      <VideoReel />
-      <AboutIntro />
       <ProgrammesSection />
+      <ForParents />
       <WhyZenith />
       <Classrooms />
-      <ContactSection />
-      <AdmissionsSection />
-      <ResourcesSection />
+      <VideoReel />
+      <AboutIntro />
       <Leadership />
+      <ResourcesSection />
       <Faq />
+      <ContactSection />
     </main>
   );
 }

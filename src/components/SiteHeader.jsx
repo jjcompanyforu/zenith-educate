@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { CATEGORIES } from '../data/courses.js';
-import { SITE, whatsappLink } from '../data/site.js';
+import { SITE } from '../data/site.js';
 
 const LINKS = [
   { to: '/', label: 'Home', end: true },
-  { to: '/about', label: 'About' },
-  { to: '/programmes', label: 'Programmes', dropdown: true },
-  { to: '/#why', label: 'Why Zenith' },
-  { to: '/admissions', label: 'Admissions' },
+  { to: '/programmes', label: 'Courses', dropdown: true },
   { to: '/results', label: 'Results' },
-  { to: '/resources', label: 'Resources' },
-  { to: '/#leadership', label: 'Leadership' },
+  { to: '/admissions', label: 'Admissions' },
+  { to: '/scholarships', label: 'Scholarships' },
+  { to: '/resources', label: 'Free Resources' },
+  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -65,14 +64,9 @@ export default function SiteHeader() {
               </NavLink>
             ),
           )}
-          <a
-            className="cta nav-cta"
-            href={whatsappLink(`Hello ${SITE.name}`)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Talk to an advisor ↗
-          </a>
+          <Link className="cta nav-cta" to="/admissions#apply">
+            Book free counselling
+          </Link>
         </nav>
       </div>
     </header>

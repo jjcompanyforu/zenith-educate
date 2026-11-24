@@ -1,6 +1,6 @@
 // Mostly static homepage sections.
 import CourseCatalog from '../components/courses/CourseCatalog.jsx';
-import { SITE } from '../data/site.js';
+import { SITE, whatsappLink } from '../data/site.js';
 
 export function AboutIntro() {
   return (
@@ -87,7 +87,7 @@ export function Classrooms() {
   return (
     <section className="section campus" id="campus">
       <div className="wrap campus-grid">
-        <a className="campus-poster" href="#contact" aria-label="Enquire now about classes at Zenith Educate">
+        <a className="campus-poster" href="#enquiry" aria-label="Enquire now about classes at Zenith Educate">
           <img
             src="/assets/img/promo/classroom-poster.jpg"
             alt="Zenith Educate classroom poster: Your next chapter starts in the classroom. Courses in Banking and SSC, CUET, Accounting and IT, Data Science, Cyber Security and AI. Call or WhatsApp +91 89211 46637."
@@ -111,8 +111,8 @@ export function Classrooms() {
             ))}
           </div>
           <div className="campus-actions">
-            <a className="btn" href="#contact">
-              Enquire now →
+            <a className="btn" href="#enquiry">
+              Book free counselling →
             </a>
             <a className="campus-call" href={SITE.phoneHref}>
               <small>Call / WhatsApp</small>
@@ -127,39 +127,64 @@ export function Classrooms() {
 
 export const FAQS = [
   [
+    'How do I join a course?',
+    'Book a free counselling session by phone, WhatsApp or the form on this site. We help you choose the right course and batch, then you submit your application with ID proof and certificates, confirm your batch and start classes.',
+  ],
+  [
+    'What are the fees? Can we pay in instalments?',
+    'Fees depend on the course and mode of study. EMI and instalment options are available. Message us on WhatsApp or call and we will share the current fee plan for your course.',
+  ],
+  [
+    'Are scholarships available?',
+    'Yes. We offer merit-based, need-based, special and early-bird scholarships. Seats are limited per batch, so apply during registration. A short test or interview may be part of the process.',
+  ],
+  [
+    'Are classes taught in Malayalam?',
+    'Our exam coaching programmes are taught in both English and Malayalam, so concepts are clear in the language your child is most comfortable with.',
+  ],
+  [
+    'What are the batch timings?',
+    'We run morning, evening and weekend batches, so students can attend alongside college, school or work. Ask us for the next batch start date.',
+  ],
+  [
+    'Can I attend classes online?',
+    'Yes. Most programmes are available online, in the classroom or as a hybrid of both.',
+  ],
+  [
     'How long are the courses?',
-    'Duration varies by programme. The original site describes many programmes between 3 and 6 months, with specific courses having their own durations.',
+    'Most programmes run for 3 to 6 months; short skill courses such as Advanced Excel or Tally take 1 to 2 months. Each course shows its exact duration on the Courses page.',
   ],
   [
-    'Are online classes available?',
-    'Yes. Online and offline modes are described for most programmes, with hybrid options for selected courses.',
+    'How are doubts cleared and progress tracked?',
+    'Students get regular doubt-clearing sessions, practice sheets and mock tests, plus 1-on-1 mentorship from faculty.',
   ],
-  ['How can I clear doubts?', 'Daily doubt-clearing, mentor support and WhatsApp contact with faculty are described.'],
-  [
-    'Will I receive a certificate?',
-    'Certificates are described as available on successful completion; recognition depends on the programme and should be confirmed.',
-  ],
-  [
-    'How do I apply for a scholarship?',
-    'Apply during registration and provide the required documents. A test or interview may be required.',
-  ],
-  ['Where is Zenith located?', `${SITE.address}.`],
+  ['Will I receive a certificate?', 'Yes. Students receive a certificate on successful completion of their course.'],
+  ['Where is Zenith Educate located?', `${SITE.address}. Parents and students are welcome to visit the centre.`],
 ];
 
 export function Faq() {
   return (
     <section className="section programmes" id="faq">
-      <div className="wrap">
-        <div className="eyebrow">COMMON QUESTIONS</div>
-        <h2>
-          Frequently asked <em>questions.</em>
-        </h2>
-        <div className="grid">
-          {FAQS.map(([q, a]) => (
-            <article className="card" key={q}>
-              <h3>{q}</h3>
+      <div className="wrap faq-wrap">
+        <div className="faq-side">
+          <div className="eyebrow">COMMON QUESTIONS</div>
+          <h2>
+            Questions students &amp; <em>parents ask.</em>
+          </h2>
+          <p className="intro">Can’t find your answer? Our counsellors are happy to help.</p>
+          <a className="btn" href={whatsappLink('Hello Zenith Educate, I have a question.')} target="_blank" rel="noopener noreferrer">
+            Ask on WhatsApp
+          </a>
+          <a className="faq-call" href={SITE.phoneHref}>
+            or call {SITE.phoneDisplay}
+          </a>
+        </div>
+        <div className="faq-list">
+          {FAQS.map(([q, a], i) => (
+            <details className="faq-item" key={q} open={i === 0}>
+              <summary>{q}</summary>
               <p>{a}</p>
-            </article>
+            </details>
           ))}
         </div>
       </div>

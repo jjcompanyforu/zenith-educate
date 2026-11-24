@@ -271,7 +271,6 @@ export default function ResultsPage() {
         </div>
       </Reveal>
 
-      <p className="rz-footnote">Figures and testimonials as published by Zenith Educate.</p>
     </PageLayout>
   );
 }

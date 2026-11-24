@@ -64,10 +64,10 @@ export default function Leadership() {
           <h3>Chairman's message</h3>
           <p>Dear Students, Parents, and Well-Wishers,</p>
           <p>
-            Zenith's published message describes a 25-year journey from a small coaching centre to a multidisciplinary
-            institute spanning Banking, SSC, CUET and professional training in SAP, Tally, Accounting, data science, AI
-            and Logistics. Its stated focus is building character, confidence and careers through experienced faculty,
-            modern teaching methods and student-centred support.
+            Over 25 years, Zenith has grown from a small coaching centre into a multidisciplinary institute spanning
+            Banking, SSC, CUET and professional training in SAP, Tally, Accounting, Data Science, AI and Logistics. Our
+            focus has always been the same: building character, confidence and careers through experienced faculty,
+            modern teaching methods and support for every student.
           </p>
           <b>Akhil V Raj</b>
           <p>Chairman, Zenith Educate</p>
@@ -85,7 +85,7 @@ export default function Leadership() {
         <div>
           <h3>Lekshmi P S</h3>
           <p>Senior Faculty · Zenith Educate</p>
-          <p>The original site describes her experience in competitive-exam training and student mentoring.</p>
+          <p>Experienced in competitive-exam training and student mentoring.</p>
         </div>
       </div>
     </section>

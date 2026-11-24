@@ -52,17 +52,17 @@ export default function AboutPage() {
           </article>
           <article className="card">
             <h3>Consistent Track Record</h3>
-            <p>The original site describes student success in government exams and careers in Finance and Logistics.</p>
+            <p>Our students have secured top ranks in government exams and built careers in Finance and Logistics.</p>
           </article>
         </div>
       </div>
       <div className="section">
         <h2>25 Years of Experience</h2>
-        <p>Zenith Educate describes a legacy of 25+ years, combining traditional experience with modern learning methods.</p>
+        <p>For over 25 years, Zenith Educate has combined traditional teaching experience with modern learning methods.</p>
         <h3>Library & Book Store</h3>
-        <p>Students can access exam guides, reference books and study materials. See the <Link to="/resources">student resources</Link> page.</p>
+        <p>Enrolled students get free access to exam guides, reference books, previous years’ papers and study materials. See our <Link to="/resources">free study resources</Link>.</p>
         <h3>Scholarship Facility</h3>
-        <p>Merit, need-based, special and early-bird scholarship options are described on the original website.</p>
+        <p>Merit-based, need-based, special and early-bird scholarships help deserving students join. <Link to="/scholarships">See scholarships</Link>.</p>
       </div>
 
     </PageLayout>

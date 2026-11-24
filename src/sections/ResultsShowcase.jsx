@@ -3,22 +3,9 @@ const STATS = [
   { value: '1200', title: 'Students Cracked Exams', text: 'Students achieving their exam goals' },
   { value: '870', title: 'Verified Scorecards', text: "Scorecards featured in Zenith's results" },
   { value: '160', title: 'Top Rank Holders', text: 'Top rank achievements' },
-  { value: '95', percent: true, title: 'Success Rate', text: 'Published success-rate figure' },
+  { value: '95', percent: true, title: 'Success Rate', text: 'Of our students achieve their goals' },
 ];
 
-
-export function Highlights() {
-  return (
-    <div className="strip">
-      <div className="wrap">
-        <span>✦ Experienced guidance</span>
-        <span>▣ Structured programmes</span>
-        <span>◎ Student-focused support</span>
-        <span>↗ Career-ready learning</span>
-      </div>
-    </div>
-  );
-}
 
 export default function ResultsShowcase() {
   return (
@@ -31,8 +18,7 @@ export default function ResultsShowcase() {
               Real effort. <em>Remarkable results.</em>
             </h2>
             <p>
-              Every milestone represents a student's hard work, preparation and progress. Explore the achievements
-              published by Zenith Educate.
+              Every milestone represents a student's hard work, preparation and progress – and the guidance behind it.
             </p>
           </div>
           <Link className="results-link" to="/results">

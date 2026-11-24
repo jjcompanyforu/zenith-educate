@@ -51,10 +51,11 @@ export default function ApplyDialog({ request, onClose }) {
     const text = [
       `${type} – Zenith Educate`,
       '',
+      `Applying as: ${d.get('who')}`,
       `Course: ${d.get('course')}`,
       `Name: ${d.get('name')}`,
       `Mobile: ${d.get('mobile')}`,
-      `Email: ${d.get('email')}`,
+      `Email: ${d.get('email') || '-'}`,
       `Qualification: ${d.get('qualification') || '-'}`,
       `Preferred mode: ${d.get('mode')}`,
       `Preferred batch: ${d.get('batch')}`,
@@ -92,6 +93,15 @@ export default function ApplyDialog({ request, onClose }) {
         </div>
       ) : (
         <form className="cx-form" noValidate onSubmit={handleSubmit}>
+          <fieldset className="cx-who">
+            <legend>Applying as</legend>
+            <label>
+              <input type="radio" name="who" value="Student" defaultChecked /> Student
+            </label>
+            <label>
+              <input type="radio" name="who" value="Parent / guardian" /> Parent / guardian
+            </label>
+          </fieldset>
           <div className="cx-row">
             <label>
               Full name *
@@ -112,8 +122,8 @@ export default function ApplyDialog({ request, onClose }) {
           </div>
           <div className="cx-row">
             <label>
-              Email *
-              <input name="email" type="email" required autoComplete="email" placeholder="you@example.com" />
+              Email <span className="cx-opt">(optional)</span>
+              <input name="email" type="email" autoComplete="email" placeholder="you@example.com" />
             </label>
             <label>
               Course *

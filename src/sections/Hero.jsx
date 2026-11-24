@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import usePointerTilt from '../hooks/usePointerTilt.js';
 
 export default function Hero() {
@@ -18,23 +19,29 @@ export default function Hero() {
             starts with <em>learning.</em>
           </h1>
           <p>
-            Build confidence, develop in-demand skills and move closer to your goals with expert-led training at
-            Zenith Educate.
+            Coaching for Bank, SSC, Railway &amp; CUET exams and job-ready courses in Accounting, IT and Logistics –
+            taught in English &amp; Malayalam at PMG Junction, Thiruvananthapuram.
           </p>
           <div className="actions">
-            <a className="btn" href="#programmes">
-              Explore programmes ↗
+            <Link className="btn" to="/admissions#apply">
+              Book free counselling
+            </Link>
+            <a className="hero-link" href="#programmes">
+              Explore courses →
             </a>
-            <a href="#about">Discover Zenith →</a>
           </div>
           <div className="proof">
             <div>
               <b>25+ years</b>
-              <small>of learning experience</small>
+              <small>guiding students</small>
             </div>
             <div>
-              <b>Career-focused</b>
-              <small>learning pathways</small>
+              <b>1,200+</b>
+              <small>students cracked exams</small>
+            </div>
+            <div>
+              <b>Online &amp; classroom</b>
+              <small>morning · evening · weekend</small>
             </div>
           </div>
         </div>

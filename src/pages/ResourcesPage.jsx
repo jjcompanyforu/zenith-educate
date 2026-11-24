@@ -11,9 +11,9 @@ export default function ResourcesPage() {
       path="/resources"
     >
       <FreeResources />
-      <div className="section">
+      <div className="section" id="library">
         <h2>Library – Your Silent Partner in Success</h2>
-        <p>The original Zenith website describes an in-house library where enrolled students can access learning and reference materials.</p>
+        <p>Our in-house library gives enrolled students free access to learning and reference materials.</p>
         <div className="grid">
           <article className="card">
             <h3>Library Collection</h3>

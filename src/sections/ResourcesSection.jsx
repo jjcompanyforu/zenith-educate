@@ -15,14 +15,14 @@ const RESOURCES = [
   {
     title: 'Library',
     text: 'Competitive-exam guides, reference books, previous-year papers, mock tests, newspapers and self-study facilities.',
-    href: `${SITE.originalSite}/library.php`,
-    link: 'View library details ↗',
+    to: '/resources#library',
+    link: 'View library details →',
   },
   {
     title: 'Book store',
-    text: 'Exam preparation books, SAP/Tally/accounting manuals, stationery and study kits are described on the original site.',
-    href: `${SITE.originalSite}/library.php`,
-    link: 'View book store details ↗',
+    text: 'Exam preparation books, SAP/Tally/accounting manuals, stationery and study kits, with discounts for enrolled students.',
+    to: '/resources#library',
+    link: 'View book store details →',
   },
 ];
 
