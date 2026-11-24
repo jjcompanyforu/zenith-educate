@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import YouTubePlayer from '../components/YouTubePlayer.jsx';
 import { PlayIcon } from './VideoReel.jsx';
@@ -7,9 +8,9 @@ import { SITE } from '../data/site.js';
 const RESOURCES = [
   {
     title: 'Free study resources',
-    text: 'The original site describes downloadable PDFs, daily general knowledge updates, current-affairs material and mock tests.',
-    href: `${SITE.originalSite}/free-resources.php`,
-    link: 'Open original resource page ↗',
+    text: 'Read or download free PDFs — current affairs, banking capsule, SSC quant sets and daily GK — right on our site.',
+    to: '/resources#free-resources',
+    link: 'Browse free resources →',
   },
   {
     title: 'Library',
@@ -86,9 +87,13 @@ export default function ResourcesSection() {
             <article className="card" key={r.title}>
               <h3>{r.title}</h3>
               <p>{r.text}</p>
-              <a href={r.href} target="_blank" rel="noreferrer">
-                {r.link}
-              </a>
+              {r.to ? (
+                <Link to={r.to}>{r.link}</Link>
+              ) : (
+                <a href={r.href} target="_blank" rel="noreferrer">
+                  {r.link}
+                </a>
+              )}
             </article>
           ))}
         </div>

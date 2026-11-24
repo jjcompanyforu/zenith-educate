@@ -11,6 +11,7 @@
     { "source": "/results.html", "destination": "/results", "permanent": true },
     { "source": "/scholarships.html", "destination": "/scholarships", "permanent": true },
     { "source": "/resources.html", "destination": "/resources", "permanent": true },
+    { "source": "/free-resources.php", "destination": "/resources#free-resources", "permanent": true },
     { "source": "/contact.html", "destination": "/contact", "permanent": true },
     { "source": "/terms.html", "destination": "/terms", "permanent": true }
   ],

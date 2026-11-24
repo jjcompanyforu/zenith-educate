@@ -1,14 +1,16 @@
 import PageLayout from '../components/PageLayout.jsx';
 import { ShortsGrid } from '../sections/ResourcesSection.jsx';
+import FreeResources from '../sections/FreeResources.jsx';
 
 export default function ResourcesPage() {
   return (
     <PageLayout
       title={"Student Resources"}
       metaTitle={"Student Resources | Zenith Educate"}
-      intro={"Library, book store, study materials, exam guides and learning resources at Zenith Educate."}
+      intro={"Free study PDFs, GK and current affairs, mock tests, library and learning resources at Zenith Educate."}
       path="/resources"
     >
+      <FreeResources />
       <div className="section">
         <h2>Library – Your Silent Partner in Success</h2>
         <p>The original Zenith website describes an in-house library where enrolled students can access learning and reference materials.</p>

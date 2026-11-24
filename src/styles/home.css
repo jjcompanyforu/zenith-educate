@@ -297,3 +297,17 @@ html.cx-lock{overflow:hidden}
 @media(max-width:960px){.cx-grid{grid-template-columns:repeat(2,1fr);gap:22px}}
 @media(max-width:620px){.cx-grid{grid-template-columns:1fr}.cx-cat-head{padding-left:18px}.cx-body{padding:22px}.cx-mods,.cx-row{grid-template-columns:1fr}.cx-detail-content,.cx-form{padding:22px 20px}.cx-apply-head{padding:22px 20px}.cx-detail-title{left:20px}.cx-detail-hero{height:190px}}
 @media(prefers-reduced-motion:reduce){.cx-card,.cx-media img,.cx-cover svg{transition:none}.cx-dialog[open]{animation:none}.cx-badge:before{animation:none}}
+
+/* Hero readability: the photo's "ZENITH EDUCATE" sign sat right behind the
+   headline. A stronger left-side overlay keeps the copy crisp while the
+   photo stays visible on the right. */
+.hero{background:linear-gradient(0deg,rgba(28,36,92,.85) 0%,rgba(28,36,92,0) 22%),linear-gradient(100deg,rgba(26,33,86,.95) 0%,rgba(30,39,96,.9) 45%,rgba(40,50,112,.78) 58%,rgba(48,59,125,.3) 76%,rgba(48,59,125,.1) 100%),url(/assets/img/promo/reception-hero.jpg) center 22%/cover no-repeat #303b7d}
+.hero h1,.hero p{text-shadow:0 2px 18px rgba(14,19,56,.45)}
+@media(max-width:760px){.hero{background:linear-gradient(180deg,rgba(26,33,86,.93) 0%,rgba(30,39,96,.86) 55%,rgba(28,36,92,.95) 100%),url(/assets/img/promo/reception-hero.jpg) center 22%/cover no-repeat #303b7d}}
+
+/* Wide screens: use more of the available width instead of a narrow column. */
+@media(min-width:1500px){.wrap{width:min(1320px,calc(100% - 96px))}.page .page-main{max-width:1368px}.page .page-hero{padding-left:calc((100% - 1320px)/2);padding-right:calc((100% - 1320px)/2)}.hero h1{font-size:72px}}
+@media(min-width:2100px){.wrap{width:min(1480px,calc(100% - 140px))}.page .page-main{max-width:1528px}.page .page-hero{padding-left:calc((100% - 1480px)/2);padding-right:calc((100% - 1480px)/2)}}
+
+/* Floating WhatsApp button must stay above the hero's floating chips/badges. */
+.wa{z-index:900}

@@ -8,7 +8,8 @@
 .page-hero {
   background: linear-gradient(120deg, var(--navy), var(--blue));
   color: #fff;
-  padding: 65px 7%;
+  /* Line the hero text up with the header/content column. */
+  padding: 65px max(24px, calc((100% - 1160px) / 2));
 }
 .page-hero small {
   color: #ffb2a8;
@@ -26,7 +27,7 @@
   margin: 0;
 }
 .page-main {
-  max-width: 1120px;
+  max-width: 1208px; /* 1160px content column + 24px padding each side */
   margin: auto;
   padding: 55px 24px;
 }
