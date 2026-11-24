@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 const STATS = [
   { value: '1200', title: 'Students Cracked Exams', text: 'Students achieving their exam goals' },
   { value: '870', title: 'Verified Scorecards', text: "Scorecards featured in Zenith's results" },
@@ -5,7 +6,6 @@ const STATS = [
   { value: '95', percent: true, title: 'Success Rate', text: 'Published success-rate figure' },
 ];
 
-const RESULTS_URL = 'https://www.zenitheducate.in/result.php';
 
 export function Highlights() {
   return (
@@ -35,9 +35,9 @@ export default function ResultsShowcase() {
               published by Zenith Educate.
             </p>
           </div>
-          <a className="results-link" href={RESULTS_URL} target="_blank" rel="noopener noreferrer">
+          <Link className="results-link" to="/results">
             Explore all results <span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </div>
         <div className="results-stats">
           {STATS.map((s) => (
@@ -52,10 +52,8 @@ export default function ResultsShowcase() {
           ))}
         </div>
         <div className="results-bottom">
-          <span>See the achievements and scorecard details on the official results page.</span>
-          <a href={RESULTS_URL} target="_blank" rel="noopener noreferrer">
-            View student results →
-          </a>
+          <span>See success stories, scorecards and our faculty on the results page.</span>
+          <Link to="/results">View student results →</Link>
         </div>
       </div>
     </section>
