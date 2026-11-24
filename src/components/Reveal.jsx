@@ -44,7 +44,7 @@ export default function Reveal({ as: Tag = 'div', delay = 0, variant = 'up', cla
 const prefersReducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
 // Counts from 0 to `value` once visible.
-export function CountUp({ value, duration = 1800, suffix = '' }) {
+export function CountUp({ value, duration = 1800, suffix = '', delay = 0 }) {
   const [ref, inView] = useInView({ threshold: 0.4 });
   const [n, setN] = useState(0);
   useEffect(() => {
@@ -54,19 +54,34 @@ export function CountUp({ value, duration = 1800, suffix = '' }) {
       return undefined;
     }
     let raf;
-    const start = performance.now();
+    let start;
     const tick = (now) => {
+      start ??= now;
       const t = Math.min(1, (now - start) / duration);
       setN(Math.round(value * (1 - (1 - t) ** 3)));
       if (t < 1) raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, value, duration]);
+    const timer = setTimeout(() => {
+      raf = requestAnimationFrame(tick);
+    }, delay);
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(raf);
+    };
+  }, [inView, value, duration, delay]);
   return (
     <span ref={ref} aria-label={`${value.toLocaleString('en-IN')}${suffix}`}>
-      <span aria-hidden="true">{n.toLocaleString('en-IN')}</span>
-      {suffix && <span className="cu-suffix" aria-hidden="true">{suffix}</span>}
+      {/* The hidden final value reserves the width so nothing shifts while counting. */}
+      <span className="cu-num" aria-hidden="true">
+        <span className="cu-ghost">
+          {value.toLocaleString('en-IN')}
+          {suffix && <span className="cu-suffix">{suffix}</span>}
+        </span>
+        <span>
+          {n.toLocaleString('en-IN')}
+          {suffix && <span className="cu-suffix">{suffix}</span>}
+        </span>
+      </span>
     </span>
   );
 }

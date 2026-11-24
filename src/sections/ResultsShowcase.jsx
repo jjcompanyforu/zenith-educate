@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import Reveal, { CountUp } from '../components/Reveal.jsx';
 const STATS = [
-  { value: '1200', title: 'Students Cracked Exams', text: 'Students achieving their exam goals' },
+  { value: '1200', plus: true, title: 'Students Cracked Exams', text: 'Students achieving their exam goals' },
   { value: '870', title: 'Verified Scorecards', text: "Scorecards featured in Zenith's results" },
   { value: '160', title: 'Top Rank Holders', text: 'Top rank achievements' },
   { value: '95', percent: true, title: 'Success Rate', text: 'Of our students achieve their goals' },
@@ -26,15 +27,15 @@ export default function ResultsShowcase() {
           </Link>
         </div>
         <div className="results-stats">
-          {STATS.map((s) => (
-            <article className="result-stat" key={s.title}>
+          {STATS.map((s, i) => (
+            <Reveal as="article" className="result-stat" key={s.title} delay={i * 100}>
               <span className="result-number">
-                {s.value}
+                <CountUp value={Number(s.value)} suffix={s.plus ? '+' : ''} />
                 {s.percent && <span className="percent">%</span>}
               </span>
               <h3>{s.title}</h3>
               <p>{s.text}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
         <div className="results-bottom">

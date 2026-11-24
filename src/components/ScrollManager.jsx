@@ -9,7 +9,8 @@ export default function ScrollManager() {
 
   useEffect(() => {
     if (!hash || hash.startsWith('#course-')) {
-      if (!hash) window.scrollTo(0, 0);
+      // 'instant' overrides the CSS smooth scrolling so a new page starts at the top.
+      if (!hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       return undefined;
     }
     const id = decodeURIComponent(hash.slice(1));

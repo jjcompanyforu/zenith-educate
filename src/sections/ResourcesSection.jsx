@@ -4,6 +4,7 @@ import YouTubePlayer from '../components/YouTubePlayer.jsx';
 import { PlayIcon } from './VideoReel.jsx';
 import { SHORTS, shortUrl } from '../data/videos.js';
 import { SITE } from '../data/site.js';
+import Reveal from '../components/Reveal.jsx';
 
 const RESOURCES = [
   {
@@ -83,8 +84,8 @@ export default function ResourcesSection() {
           Resources, library <em>&amp; support.</em>
         </h2>
         <div className="grid">
-          {RESOURCES.map((r) => (
-            <article className="card" key={r.title}>
+          {RESOURCES.map((r, i) => (
+            <Reveal as="article" className="card" key={r.title} delay={i * 90}>
               <h3>{r.title}</h3>
               <p>{r.text}</p>
               {r.to ? (
@@ -94,7 +95,7 @@ export default function ResourcesSection() {
                   {r.link}
                 </a>
               )}
-            </article>
+            </Reveal>
           ))}
         </div>
         <ShortsGrid />

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import usePointerTilt from '../hooks/usePointerTilt.js';
+import Reveal from '../components/Reveal.jsx';
 
 // Animated chairman portrait: wipes in when scrolled into view, tilts on hover.
 function ChairmanPortrait() {
@@ -58,7 +59,7 @@ export default function Leadership() {
       <h2>
         Guidance from <em>experience.</em>
       </h2>
-      <div className="about">
+      <Reveal className="about">
         <ChairmanPortrait />
         <div>
           <h3>Chairman's message</h3>
@@ -72,8 +73,8 @@ export default function Leadership() {
           <b>Akhil V Raj</b>
           <p>Chairman, Zenith Educate</p>
         </div>
-      </div>
-      <div className="about" style={{ marginTop: '48px' }}>
+      </Reveal>
+      <Reveal className="about" style={{ marginTop: '48px' }}>
         <img
           src="/assets/img/teacher/lekshmi.jpg"
           alt="Lekshmi P S, Senior Faculty at Zenith Educate"
@@ -87,7 +88,7 @@ export default function Leadership() {
           <p>Senior Faculty · Zenith Educate</p>
           <p>Experienced in competitive-exam training and student mentoring.</p>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

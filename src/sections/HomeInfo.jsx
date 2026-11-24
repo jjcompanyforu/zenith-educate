@@ -1,12 +1,15 @@
 // Mostly static homepage sections.
 import CourseCatalog from '../components/courses/CourseCatalog.jsx';
+import Reveal from '../components/Reveal.jsx';
 import { SITE, whatsappLink } from '../data/site.js';
 
 export function AboutIntro() {
   return (
     <section className="section wrap about" id="about">
-      <img src="/assets/img/banner/banner-1.jpg" alt="Zenith Educate students studying together" />
-      <div>
+      <Reveal variant="left" className="about-media">
+        <img src="/assets/img/banner/banner-1.jpg" alt="Zenith Educate students studying together" loading="lazy" />
+      </Reveal>
+      <Reveal delay={120}>
         <div className="eyebrow">ABOUT ZENITH EDUCATE</div>
         <h2>
           More than a classroom.
@@ -27,7 +30,7 @@ export function AboutIntro() {
           <br />✓ Personalised student guidance
           <br />✓ A broad range of career pathways
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -71,11 +74,11 @@ export function WhyZenith() {
           <em>Progress with confidence.</em>
         </h2>
         <div className="whygrid">
-          {WHY.map(([title, text]) => (
-            <article className="whycard" key={title}>
+          {WHY.map(([title, text], i) => (
+            <Reveal as="article" className="whycard" key={title} delay={i * 90}>
               <h3>{title}</h3>
               <p>{text}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -18,11 +18,33 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
+  const [scrolled, setScrolled] = useState(false);
+
   // Close the mobile menu whenever the route changes.
   useEffect(() => setOpen(false), [location.pathname, location.search, location.hash]);
 
+  // Compact header once the page is scrolled. Two thresholds (hysteresis) stop
+  // it flickering when the scroll position sits right at the boundary.
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      setScrolled((was) => (was ? y > 24 : y > 90));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="wrap nav">
         <Link className="brand" to="/" aria-label={`${SITE.name} home`}>
           <img className="brand-logo" src="/assets/img/logo/1.jpeg" alt={`${SITE.name} logo`} />

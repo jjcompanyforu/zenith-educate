@@ -7,6 +7,7 @@ import './styles/pages.css';
 import './styles/resources.css';
 import './styles/results.css';
 import './styles/ux.css';
+import './styles/motion.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

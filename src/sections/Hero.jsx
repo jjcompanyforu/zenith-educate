@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import usePointerTilt from '../hooks/usePointerTilt.js';
+import { CountUp } from '../components/Reveal.jsx';
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -12,17 +13,22 @@ export default function Hero() {
     <section className="hero" id="home" ref={heroRef}>
       <div className="wrap hero-grid">
         <div>
-          <div className="eyebrow">EDUCATION THAT MOVES YOU FORWARD</div>
+          <div className="eyebrow hero-in" style={{ '--i': 0 }}>
+            EDUCATION THAT MOVES YOU FORWARD
+          </div>
           <h1>
-            Your next chapter
-            <br />
-            starts with <em>learning.</em>
+            <span className="hero-line hero-in" style={{ '--i': 1 }}>
+              Your next chapter
+            </span>
+            <span className="hero-line hero-in" style={{ '--i': 2 }}>
+              starts with <em>learning.</em>
+            </span>
           </h1>
-          <p>
+          <p className="hero-in" style={{ '--i': 3 }}>
             Coaching for Bank, SSC, Railway &amp; CUET exams and job-ready courses in Accounting, IT and Logistics –
             taught in English &amp; Malayalam at PMG Junction, Thiruvananthapuram.
           </p>
-          <div className="actions">
+          <div className="actions hero-in" style={{ '--i': 4 }}>
             <Link className="btn" to="/admissions#apply">
               Book free counselling
             </Link>
@@ -30,13 +36,17 @@ export default function Hero() {
               Explore courses →
             </a>
           </div>
-          <div className="proof">
+          <div className="proof hero-in" style={{ '--i': 5 }}>
             <div>
-              <b>25+ years</b>
+              <b>
+                <CountUp value={25} suffix="+" duration={1400} delay={700} /> years
+              </b>
               <small>guiding students</small>
             </div>
             <div>
-              <b>1,200+</b>
+              <b>
+                <CountUp value={1200} suffix="+" duration={1800} delay={700} />
+              </b>
               <small>students cracked exams</small>
             </div>
             <div>

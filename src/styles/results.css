@@ -1,24 +1,33 @@
-/* ===== Scroll reveal (shared) ===== */
+/* ===== Scroll reveal (shared) =====
+   A one-off animation rather than a transition, so elements keep their own
+   hover transitions (e.g. card lift) once they have appeared. */
 .rv {
   opacity: 0;
-  transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.25, 1);
-  transition-delay: var(--d, 0ms);
-}
-.rv-up {
-  transform: translateY(28px);
-}
-.rv-left {
-  transform: translateX(-36px);
 }
 .rv.is-in {
   opacity: 1;
-  transform: none;
+  animation: rv-up 0.8s cubic-bezier(0.2, 0.8, 0.25, 1) var(--d, 0ms) backwards;
+}
+.rv-left.is-in {
+  animation-name: rv-left;
+}
+@keyframes rv-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+@keyframes rv-left {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .rv {
+  .rv,
+  .rv.is-in {
     opacity: 1;
-    transform: none;
-    transition: none;
+    animation: none;
   }
 }
 
@@ -373,9 +382,8 @@
   border-radius: 16px;
   box-shadow: 0 8px 26px #202b500b;
 }
-.rz-strength.is-in {
-  transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.25, 1) var(--d), box-shadow 0.25s,
-    border-color 0.25s;
+.rz-strength {
+  transition: box-shadow 0.25s, border-color 0.25s;
 }
 .rz-strength:hover {
   border-color: #cfd6ee;

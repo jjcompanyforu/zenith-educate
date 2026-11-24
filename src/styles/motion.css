@@ -1,0 +1,345 @@
+/* =====================================================================
+   Motion
+   Only transform/opacity are animated (cheap on low-end phones), and
+   everything is switched off for visitors who ask for reduced motion.
+   Imported last so it can refine earlier rules.
+   ===================================================================== */
+
+/* ---------- Page change: new page rises in ---------- */
+.route-in {
+  /* "backwards" only: no transform is left behind once it finishes */
+  animation: route-in 0.45s cubic-bezier(0.2, 0.8, 0.25, 1) backwards;
+}
+@keyframes route-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ---------- Hero intro ---------- */
+/* The photo + overlay move to a layer of their own so it can slowly settle (zoom out). */
+.hero {
+  background: #1e2760;
+  isolation: isolate;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(28, 36, 92, 0.85) 0%, rgba(28, 36, 92, 0) 22%),
+    linear-gradient(100deg, rgba(26, 33, 86, 0.95) 0%, rgba(30, 39, 96, 0.9) 45%, rgba(40, 50, 112, 0.78) 58%, rgba(48, 59, 125, 0.3) 76%, rgba(48, 59, 125, 0.1) 100%),
+    url(/assets/img/promo/reception-hero.jpg) center 22% / cover no-repeat #303b7d;
+  transform-origin: 70% 30%;
+  animation: hero-settle 14s cubic-bezier(0.2, 0.6, 0.3, 1) both;
+}
+@media (max-width: 760px) {
+  .hero::before {
+    background: linear-gradient(180deg, rgba(26, 33, 86, 0.93) 0%, rgba(30, 39, 96, 0.86) 55%, rgba(28, 36, 92, 0.95) 100%),
+      url(/assets/img/promo/reception-hero.jpg) center 22% / cover no-repeat #303b7d;
+  }
+}
+@keyframes hero-settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.hero-line {
+  display: block;
+}
+.hero-in {
+  animation: hero-rise 0.8s cubic-bezier(0.2, 0.8, 0.25, 1) calc(var(--i, 0) * 110ms + 120ms) backwards;
+}
+.hero .scene {
+  animation: hero-scene 1s cubic-bezier(0.2, 0.8, 0.25, 1) 0.35s backwards;
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+@keyframes hero-scene {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+}
+
+/* CountUp: hidden final value reserves the width so text beside it doesn't shift */
+.cu-num {
+  display: inline-grid;
+}
+.cu-num > * {
+  grid-area: 1 / 1;
+}
+.cu-ghost {
+  visibility: hidden;
+}
+
+/* ---------- Header: compact + shadow once scrolled ---------- */
+.site-header {
+  transition: box-shadow 0.25s ease;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 8px 28px #1b2c5b1f;
+}
+@media (min-width: 761px) {
+  /* The bar loses 16px of height and gains 16px of margin at the same rate,
+     so the page below never jumps. */
+  .site-header {
+    transition: box-shadow 0.25s ease, margin-bottom 0.25s ease;
+  }
+  .site-header .nav {
+    transition: min-height 0.25s ease;
+  }
+  .site-header.is-scrolled {
+    margin-bottom: 16px;
+  }
+  .site-header.is-scrolled .nav {
+    min-height: 66px;
+  }
+  .links > a:not(.cta),
+  .nav-drop-trigger {
+    transition: padding 0.25s ease, color 0.2s;
+  }
+  .site-header.is-scrolled .links > a:not(.cta),
+  .site-header.is-scrolled .nav-drop-trigger {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+  .brand-logo {
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+  }
+  .site-header.is-scrolled .brand-logo {
+    transform: scale(0.86);
+  }
+
+  /* Courses dropdown fades and slides instead of popping in */
+  .nav-submenu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  }
+  .nav-dropdown:hover .nav-submenu,
+  .nav-dropdown:focus-within .nav-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+}
+@media (max-width: 760px) {
+  .links.is-open {
+    animation: menu-drop 0.22s ease-out;
+  }
+}
+@keyframes menu-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* ---------- Counselling form ---------- */
+.eq-who {
+  display: block;
+}
+.eq-who-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  border: 1.5px solid #d9deec;
+  border-radius: 14px;
+  background: #f4f6fb;
+}
+.eq-who-pill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border: 1.5px solid var(--navy);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 12px #303b7d1f;
+  transition: transform 0.32s cubic-bezier(0.3, 1.25, 0.5, 1);
+}
+.eq-who-track[data-who='Parent'] .eq-who-pill {
+  transform: translateX(100%);
+}
+.eq .eq-who label,
+.eq .eq-who label.is-on {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding: 10px 8px;
+  border: 0;
+  background: none;
+}
+.eq .eq-who label:not(.is-on) {
+  color: #62677d;
+}
+
+/* Student's-name field slides open when "Parent" is chosen */
+.eq-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-left: 26px;
+  margin-right: 26px;
+  transition: grid-template-rows 0.3s ease, opacity 0.25s ease;
+}
+.eq-collapse.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.eq-collapse > div {
+  min-height: 0;
+  overflow: hidden;
+  margin: 0 -4px;
+}
+.eq-collapse label {
+  /* room for the input's focus ring inside the clipped area */
+  padding: 0 4px 4px;
+}
+@media (max-width: 520px) {
+  .eq-collapse {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+}
+
+/* Submit: WhatsApp icon becomes a drawn tick */
+.eq-tick {
+  display: none;
+}
+.eq-tick path {
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+.eq-submit.is-ok,
+.eq-submit.is-ok:hover {
+  background: #1c744f;
+  transform: none;
+  cursor: default;
+}
+.eq-submit.is-ok .eq-wa {
+  display: none;
+}
+.eq-submit.is-ok .eq-tick {
+  display: block;
+  animation: eq-pop 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.eq-submit.is-ok .eq-tick path {
+  animation: eq-draw 0.4s 0.1s ease-out forwards;
+}
+.eq-done {
+  animation: eq-in 0.45s ease backwards;
+}
+.eq-done-icon {
+  animation: eq-pop 0.5s 0.15s cubic-bezier(0.3, 1.6, 0.5, 1) backwards;
+}
+@keyframes eq-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes eq-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+@keyframes eq-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* ---------- FAQ: smooth open/close (Chrome 131+; others open instantly) ---------- */
+@supports selector(::details-content) {
+  .faq-item {
+    interpolate-size: allow-keywords;
+  }
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: block-size 0.32s ease, opacity 0.25s ease, content-visibility 0.32s allow-discrete;
+  }
+  .faq-item[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item::details-content {
+      transition: none;
+    }
+  }
+}
+
+/* ---------- Phone bar: slides up, WhatsApp pulses once ---------- */
+@media (max-width: 760px) {
+  .mbar {
+    transform: translateY(calc(100% + 12px));
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.25, 1);
+  }
+  .mbar.is-shown {
+    transform: none;
+  }
+  .mbar.is-pulse .mbar-wa {
+    animation: mbar-pulse 1.2s 0.45s ease-out;
+  }
+}
+@keyframes mbar-pulse {
+  from {
+    box-shadow: 0 0 0 0 #23875d73;
+  }
+  to {
+    box-shadow: 0 0 0 14px #23875d00;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .route-in,
+  .hero::before,
+  .hero-in,
+  .hero .scene,
+  .links.is-open,
+  .eq-done,
+  .eq-done-icon,
+  .eq-submit.is-ok .eq-tick,
+  .mbar.is-pulse .mbar-wa {
+    animation: none;
+  }
+  .eq-submit.is-ok .eq-tick path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .site-header,
+  .site-header .nav,
+  .brand-logo,
+  .links > a:not(.cta),
+  .nav-drop-trigger,
+  .nav-submenu,
+  .eq-who-pill,
+  .eq-collapse,
+  .mbar {
+    transition: none;
+  }
+}
