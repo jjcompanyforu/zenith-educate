@@ -7,7 +7,9 @@ export default function Footer() {
     <footer className="footer ft">
       <div className="wrap ft-grid">
         <div className="ft-brand">
-          <b>ZENITH EDUCATE</b>
+          <b>
+            ZENITH <em>EDUCATE</em>
+          </b>
           <p>
             Coaching for Bank, SSC, Railway and CUET exams, plus job-ready courses in Accounting, IT and Logistics.
             25+ years of guiding students in Thiruvananthapuram.
@@ -60,6 +62,9 @@ export default function Footer() {
           </a>
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
         </div>
+      </div>
+      <div className="wrap ft-word" aria-hidden="true">
+        ZENITH <em>EDUCATE</em>
       </div>
       <div className="wrap ft-bottom">
         <span>

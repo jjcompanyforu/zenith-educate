@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import CourseCard from './CourseCard.jsx';
 import CourseDetailDialog from './CourseDetailDialog.jsx';
 import ApplyDialog from './ApplyDialog.jsx';
@@ -24,14 +24,17 @@ export default function CourseCatalog() {
   const [detailId, setDetailId] = useState(null);
   const [applyRequest, setApplyRequest] = useState(null);
 
-  // Open a course straight from a shared link such as /#course-ssc.
+  // Open a course straight from a link such as /programmes?cat=acc#course-tally
+  // (shared links and the header menu). Re-runs on every navigation, so it also
+  // works when the menu is used while this page is already open.
+  const { key: navKey } = useLocation();
   useEffect(() => {
     const id = window.location.hash.startsWith('#course-') ? window.location.hash.slice(8) : null;
     if (id && courseById(id)) {
       setDetailId(id);
       document.getElementById('programmes')?.scrollIntoView();
     }
-  }, []);
+  }, [navKey]);
 
   const selectTab = (id) =>
     setParams(

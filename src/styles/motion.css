@@ -112,11 +112,11 @@
     padding-top: 22px;
     padding-bottom: 22px;
   }
-  .brand-logo {
+  .brand {
     transform-origin: left center;
     transition: transform 0.25s ease;
   }
-  .site-header.is-scrolled .brand-logo {
+  .site-header.is-scrolled .brand {
     transform: scale(0.86);
   }
 
@@ -333,7 +333,7 @@
   }
   .site-header,
   .site-header .nav,
-  .brand-logo,
+  .brand,
   .links > a:not(.cta),
   .nav-drop-trigger,
   .nav-submenu,

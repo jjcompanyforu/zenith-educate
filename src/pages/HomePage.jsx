@@ -18,15 +18,15 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <Leadership />
+      <VideoReel />
       <PathFinder />
       <ResultsShowcase />
       <ProgrammesSection />
       <ForParents />
       <WhyZenith />
       <Classrooms />
-      <VideoReel />
       <AboutIntro />
-      <Leadership />
       <ResourcesSection />
       <Faq />
       <ContactSection />

@@ -1039,3 +1039,161 @@ form.eq {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Main menu (matches zenitheducate.in) ---------- */
+.links > a:not(.cta),
+.nav-drop-trigger {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.nav-drop-toggle {
+  display: none;
+}
+@media (min-width: 761px) {
+  .nav-drop-row {
+    display: contents;
+  }
+  /* Programmes opens a full-width panel under the header */
+  .site-header .nav {
+    position: relative;
+  }
+  .nav-dropdown.nav-mega {
+    position: static;
+  }
+  /* extra specificity beats home.css's ".nav-dropdown:hover .nav-submenu{display:block}" */
+  .nav-dropdown.nav-mega .nav-submenu {
+    left: 0;
+    right: 0;
+    top: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px 18px;
+    padding: 22px 24px 14px;
+    border-radius: 0 0 14px 14px;
+  }
+  /* invisible bridge so the pointer can cross the small gap without closing it */
+  .nav-mega .nav-submenu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -14px;
+    height: 14px;
+  }
+  .nav-mega.is-held .nav-submenu {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .mega-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .nav-submenu .mega-col a {
+    padding: 8px 10px;
+    font-size: 14px;
+    white-space: normal;
+  }
+  .nav-submenu .mega-col .mega-head {
+    margin-bottom: 6px;
+    padding: 4px 10px 10px;
+    border-bottom: 1px solid #eceef5;
+    border-radius: 0;
+    color: var(--red);
+    font: 800 12px/1.4 Manrope, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-submenu .mega-col .mega-head:hover {
+    background: none;
+    color: var(--navy);
+  }
+  .nav-submenu .mega-all {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: 6px;
+    padding: 10px 12px;
+    font-weight: 800;
+    color: var(--blue);
+  }
+}
+@media (max-width: 1180px) and (min-width: 761px) {
+  .links {
+    font-size: 12px;
+    gap: 12px;
+  }
+  .nav-cta {
+    padding: 11px 12px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 960px) and (min-width: 761px) {
+  .links {
+    gap: 9px;
+    letter-spacing: 0;
+  }
+  .links > a:not(.cta),
+  .nav-drop-trigger {
+    letter-spacing: 0;
+  }
+  .nav-cta {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .nav-drop-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #edf0f7;
+  }
+  /* home.css hides nested menu links on phones (".links a:not(.cta)"); undo that here */
+  .links .nav-drop-row .nav-drop-trigger {
+    display: flex;
+    flex: 1;
+    border-bottom: 0;
+  }
+  .links .nav-submenu a {
+    display: block;
+  }
+  .nav-drop-trigger span {
+    display: none;
+  }
+  .nav-drop-toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: #f0f3fb;
+    color: var(--navy);
+    cursor: pointer;
+  }
+  .nav-drop-toggle svg {
+    transition: transform 0.2s ease;
+  }
+  .nav-mega.is-open .nav-drop-toggle svg {
+    transform: rotate(180deg);
+  }
+  .nav-mega .nav-submenu {
+    display: none;
+    margin: 4px 0 8px 4px;
+  }
+  .nav-mega.is-open .nav-submenu {
+    display: block;
+  }
+  .nav-submenu .mega-col .mega-head {
+    display: block;
+    padding: 12px 12px 4px;
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .nav-submenu .mega-all {
+    font-weight: 800;
+    color: var(--blue);
+  }
+}

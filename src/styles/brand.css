@@ -1,0 +1,183 @@
+/* =====================================================================
+   Brand: keep the name "Zenith Educate" prominent everywhere.
+   ZENITH in navy, EDUCATE in red – the two colours of the logo's book.
+   ===================================================================== */
+
+/* ---------- Header lockup: emblem + name ---------- */
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 8px;
+}
+/* The logo file has the name in small grey type under the emblem; crop to the
+   emblem only and set the name in large type next to it instead. */
+.brand-mark {
+  flex: none;
+  width: 58px;
+  height: 52px;
+  overflow: hidden;
+  position: relative;
+}
+.brand-mark img {
+  position: absolute;
+  left: -6px;
+  top: -5px;
+  width: 72px;
+  height: auto;
+  max-width: none;
+}
+.brand-word {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.brand-word b {
+  font: 800 23px/1 Manrope, sans-serif;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.brand-word em,
+.hero-brand em,
+.page-brand em,
+.ft-brand em,
+.ft-word em {
+  font-style: normal;
+  color: var(--red);
+}
+.brand-word small {
+  margin-top: 6px;
+  font: 700 9.5px/1 'DM Sans', sans-serif;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #62677d;
+  white-space: nowrap;
+}
+@media (max-width: 1180px) and (min-width: 761px) {
+  .brand-word b {
+    font-size: 20px;
+  }
+  .brand-word small {
+    display: none;
+  }
+  .brand-mark {
+    width: 48px;
+    height: 43px;
+  }
+  .brand-mark img {
+    width: 60px;
+    left: -5px;
+    top: -4px;
+  }
+}
+@media (max-width: 960px) and (min-width: 761px) {
+  .brand-word b {
+    font-size: 17px;
+    letter-spacing: 0.04em;
+  }
+}
+@media (max-width: 760px) {
+  .brand-word b {
+    font-size: 21px;
+  }
+  .brand-word small {
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+  }
+  .brand-mark {
+    width: 50px;
+    height: 45px;
+  }
+  .brand-mark img {
+    width: 62px;
+    left: -5px;
+    top: -4px;
+  }
+}
+
+/* ---------- Hero: name badge above the headline ---------- */
+.hero-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 10px 18px 10px 14px;
+  border-left: 4px solid var(--red);
+  border-radius: 0 10px 10px 0;
+  background: #ffffff14;
+  backdrop-filter: blur(4px);
+}
+.hero-brand b {
+  font: 800 clamp(20px, 2.2vw, 28px)/1 Manrope, sans-serif;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+.hero .hero-brand em {
+  color: #ff6b5e; /* lighter red so it stays readable on the dark photo */
+}
+.hero-brand span {
+  font: 700 11px/1 'DM Sans', sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #dbe2fa;
+}
+.hero p strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* ---------- Inner pages: name line above each page title ---------- */
+.page-hero .page-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #dbe2fa;
+}
+.page-brand b {
+  font: 800 16px/1 Manrope, sans-serif;
+  letter-spacing: 0.14em;
+  color: #fff;
+}
+.page-hero .page-brand em {
+  color: #ffb2a8;
+}
+.page-brand span {
+  padding-left: 12px;
+  border-left: 1px solid #ffffff55;
+  font-size: 12px;
+}
+
+/* ---------- Footer: name + big signature wordmark ---------- */
+.ft-brand b {
+  font: 800 22px/1 Manrope, sans-serif;
+  letter-spacing: 0.08em;
+}
+.ft-brand em,
+.ft-word em {
+  color: #ff8a7f;
+}
+.footer.ft .ft-word {
+  display: block; /* home.css makes footer .wrap a wrapping flex row */
+  margin-top: 44px;
+  font: 800 min(8.2vw, 112px)/0.9 Manrope, sans-serif;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: #ffffff1a;
+  user-select: none;
+  overflow: hidden;
+}
+.footer.ft .ft-word em {
+  color: #de2e1f40;
+}
+.footer.ft .ft-word + .ft-bottom {
+  margin-top: 12px;
+}
+
+/* Decorative rings (e.g. beside the chairman's photo) must never make the
+   page scroll sideways on phones. "clip" keeps the sticky header working. */
+.route {
+  overflow-x: clip;
+}

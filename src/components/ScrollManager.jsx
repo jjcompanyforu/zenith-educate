@@ -8,9 +8,10 @@ export default function ScrollManager() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    // No hash, or a course link (its pop-up handles itself): start at the top.
+    // 'instant' overrides the CSS smooth scrolling.
     if (!hash || hash.startsWith('#course-')) {
-      // 'instant' overrides the CSS smooth scrolling so a new page starts at the top.
-      if (!hash) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       return undefined;
     }
     const id = decodeURIComponent(hash.slice(1));

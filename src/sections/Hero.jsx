@@ -13,8 +13,11 @@ export default function Hero() {
     <section className="hero" id="home" ref={heroRef}>
       <div className="wrap hero-grid">
         <div>
-          <div className="eyebrow hero-in" style={{ '--i': 0 }}>
-            EDUCATION THAT MOVES YOU FORWARD
+          <div className="hero-brand hero-in" style={{ '--i': 0 }}>
+            <b>
+              ZENITH <em>EDUCATE</em>
+            </b>
+            <span>25+ years · Thiruvananthapuram</span>
           </div>
           <h1>
             <span className="hero-line hero-in" style={{ '--i': 1 }}>
@@ -25,7 +28,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="hero-in" style={{ '--i': 3 }}>
-            Coaching for Bank, SSC, Railway &amp; CUET exams and job-ready courses in Accounting, IT and Logistics –
+            <strong>Zenith Educate</strong> offers coaching for Bank, SSC, Railway &amp; CUET exams and job-ready courses in Accounting, IT and Logistics –
             taught in English &amp; Malayalam at PMG Junction, Thiruvananthapuram.
           </p>
           <div className="actions hero-in" style={{ '--i': 4 }}>

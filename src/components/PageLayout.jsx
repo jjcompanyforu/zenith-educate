@@ -6,7 +6,12 @@ export default function PageLayout({ title, metaTitle, intro, path, children }) 
   return (
     <main className="page">
       <header className="page-hero">
-        <small>Zenith Educate · Thiruvananthapuram</small>
+        <small className="page-brand">
+          <b>
+            ZENITH <em>EDUCATE</em>
+          </b>
+          <span>Thiruvananthapuram</span>
+        </small>
         <h1>{title}</h1>
         <p>{intro}</p>
       </header>
