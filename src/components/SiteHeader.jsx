@@ -2,78 +2,32 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { SITE } from '../data/site.js';
 
-// Same items and order as the menu on zenitheducate.in.
+// Keep the primary navigation focused on the decisions visitors need to make.
 const LINKS = [
   { to: '/', label: 'Home', end: true },
-  { to: '/about', label: 'About' },
   { to: '/programmes', label: 'Programmes', dropdown: true },
-  { to: '/admissions', label: 'Admissions' },
   { to: '/results', label: 'Results' },
-  { to: '/resources', label: 'Resources' },
+  { to: '/admissions', label: 'Admissions' },
   { to: '/contact', label: 'Contact' },
 ];
 
-// Programmes menu: groups and courses in the same order as the original site.
-// Each course opens its details pop-up on the Programmes page.
+// One entry per programme family. Individual courses remain discoverable in
+// the catalogue, avoiding a long, duplicated list in the global navigation.
 const PROGRAMME_GROUPS = [
-  {
-    label: 'Accounting & IT',
-    cat: 'acc',
-    items: [
-      ['Tally Prime', 'tally'],
-      ['SAP FICO', 'sap-fico'],
-      ['Advanced Excel', 'advanced-excel'],
-      ['Microsoft Office Specialist', 'mos'],
-      ['Python for Data Analysis', 'python'],
-      ['DCA', 'dca'],
-    ],
-  },
-  {
-    label: 'Government Exams',
-    cat: 'govt',
-    items: [
-      ['Bank Coaching', 'bank'],
-      ['SSC Coaching', 'ssc'],
-      ['Railway Coaching', 'railway'],
-      ['Insurance Exams', 'insurance'],
-      ['Central Govt. Jobs', 'central-govt'],
-    ],
-  },
-  {
-    label: 'Tech Courses',
-    cat: 'tech',
-    items: [
-      ['Data Science', 'data-science'],
-      ['Cyber Security', 'cyber-security'],
-      ['Artificial Intelligence', 'ai'],
-    ],
-  },
-  {
-    label: 'Entrance Coaching',
-    cat: 'cuet',
-    items: [['CUET Programme', 'cuet']],
-  },
-  {
-    label: 'Logistics & Supply Chain',
-    cat: 'logistics',
-    items: [
-      ['Certificate in Logistics', 'logistics-certificate'],
-      ['Diploma in Logistics', 'logistics-diploma'],
-      ['Advanced Diploma', 'logistics-advanced'],
-    ],
-  },
+  { label: 'Government Exams', cat: 'govt' },
+  { label: 'CUET Entrance', cat: 'cuet' },
+  { label: 'Technology Courses', cat: 'tech' },
+  { label: 'Logistics & Supply Chain', cat: 'logistics' },
+  { label: 'Accounting & IT', cat: 'acc' },
 ];
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-
   const [scrolled, setScrolled] = useState(false);
-  const [progOpen, setProgOpen] = useState(false); // Programmes list on phones
-  const [megaHold, setMegaHold] = useState(false); // keep desktop menu shut after a click until the pointer leaves
+  const [progOpen, setProgOpen] = useState(false);
+  const [megaHold, setMegaHold] = useState(false);
 
-  // Close the menus whenever the route changes. Dropping focus closes the
-  // desktop Programmes menu, which otherwise stays open via :focus-within.
   useEffect(() => {
     setOpen(false);
     setProgOpen(false);
@@ -81,8 +35,6 @@ export default function SiteHeader() {
     if (document.activeElement?.closest?.('.site-header')) document.activeElement.blur();
   }, [location.key]);
 
-  // Compact header once the page is scrolled. Two thresholds (hysteresis) stop
-  // it flickering when the scroll position sits right at the boundary.
   useEffect(() => {
     let frame = 0;
     const update = () => {
@@ -105,14 +57,11 @@ export default function SiteHeader() {
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="wrap nav">
         <Link className="brand" to="/" aria-label={`${SITE.name} home`}>
-          {/* Emblem cropped from the logo, with the name set large beside it */}
           <span className="brand-mark">
             <img src="/assets/img/logo/1.jpeg" alt="" width="890" height="845" />
           </span>
           <span className="brand-word" aria-hidden="true">
-            <b>
-              ZENITH <em>EDUCATE</em>
-            </b>
+            <b>ZENITH <em>EDUCATE</em></b>
             <small>Education that moves you forward</small>
           </span>
         </Link>
@@ -124,9 +73,7 @@ export default function SiteHeader() {
           aria-controls="primary-navigation"
           onClick={() => setOpen((o) => !o)}
         >
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </button>
         <nav className={`links${open ? ' is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">
           {LINKS.map((l) =>
@@ -160,31 +107,16 @@ export default function SiteHeader() {
                       <Link className="mega-head" to={`/programmes?cat=${g.cat}`}>
                         {g.label}
                       </Link>
-                      {g.items.map(([label, id]) => (
-                        <Link key={id} to={`/programmes?cat=${g.cat}#course-${id}`}>
-                          {label}
-                        </Link>
-                      ))}
                     </div>
                   ))}
-                  <Link className="mega-all" to="/programmes">
-                    View all programmes →
-                  </Link>
+                  <Link className="mega-all" to="/programmes">Explore all programmes →</Link>
                 </div>
               </div>
-            ) : l.to.includes('#') ? (
-              <Link key={l.to} to={l.to}>
-                {l.label}
-              </Link>
             ) : (
-              <NavLink key={l.to} to={l.to} end={l.end}>
-                {l.label}
-              </NavLink>
+              <NavLink key={l.to} to={l.to} end={l.end}>{l.label}</NavLink>
             ),
           )}
-          <Link className="cta nav-cta" to="/admissions#apply">
-            Book free counselling
-          </Link>
+          <Link className="cta nav-cta" to="/admissions#apply">Book free counselling</Link>
         </nav>
       </div>
     </header>
